@@ -1,0 +1,18 @@
+1) cd fluff*
+2) ./configure nm3
+3) make
+4) make install
+5) cd ../bin
+6) vi mudos.cfg
+
+change the following entries:
+
+name
+mudlib directory
+binary directory
+
+7) ./driver ./mudos.cfg &
+8) telnet localhost 2701
+
+Have fun!
+

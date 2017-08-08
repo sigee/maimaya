@@ -1,0 +1,11 @@
+# IntelliJ IDEA
+.idea/
+# log files
+lib/log/access
+lib/log/intermud
+lib/log/mudlist_packet
+lib/log/runtime
+# my realms folder
+lib/realms/sigee/
+# my character file
+lib/secure/save/users/s/sigee.o

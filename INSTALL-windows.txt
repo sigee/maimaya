@@ -1,0 +1,9 @@
+1) Uncompress/rename the package so that the folders like bin and lib 
+   are in c:\nm3
+2) Use wordpad to edit c:\nm3\bin\mudos.cfg.win32 and change the mudname
+3) Double-click on c:\nm3\win32\mud.bat
+4) telnet to localhost 2701
+
+
+Enjoy!
+
