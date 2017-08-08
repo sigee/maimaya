@@ -104,7 +104,7 @@ static void init_path() {
 static void init_stats() { stats = ([]); }
 
 nomask static int cmd_hook(string cmd) {
-    string file, verb;
+    string file, verb, destination, environment;
 
     if(__Locked) {
         message("prompt", sprintf("\n(%s) Password: ", mud_name()),
@@ -117,7 +117,19 @@ nomask static int cmd_hook(string cmd) {
         return 1;
     }
     if(!(file = (string)CMD_D->find_cmd(verb, search_path))) {
-        if(!((int)SOUL_D->do_cmd(verb, cmd))) { 
+        if(!((int)SOUL_D->do_cmd(verb, cmd))) {
+            environment = environment(this_object());
+            destination = environment->query_exit(verb);
+            if (environment && destination) {
+                if (environment->pre_exit_ok(verb)) {
+                    this_object()->move_player(destination, verb);
+                }
+                environment->post_exit(verb);
+                return 1;
+            }
+            if (CMD_D->is_base_exit(verb)) {
+                return notify_fail("Nem mehetsz abba az iranyba.\n");
+            }
             if((int)CHAT_D->do_chat(verb, cmd)) return 1;
             else {
                 if(query_client()) receive("<error>");
