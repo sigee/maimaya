@@ -1,0 +1,46 @@
+#format
+#map-sign:name:long:height:file_name
+#if no file_name then that area is not reachable
+
+0:tenger:%^BLUE%^~~%^RESET%^ :tenger.c
+x:tenger:%^BLUE%^%^BOLD%^~~%^RESET%^ :stenger.c
+z:tenger:%^BLUE%^~%^RESET%^%^ORANGE%^^%^RESET%^ 
+1:mezo:%^BOLD%^%^GREEN%^,,%^RESET%^ :mezo.c
+2:mezo&ut:%^BOLD%^*%^GREEN%^,%^RESET%^ :orszagut.c
+3:mezo&folyo:%^BOLD%^%^BLUE%^~%^GREEN%^,%^RESET%^ :mezofoly.c
+o:mezo&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :mezofolyam.c
+4:erdo:%^GREEN%^ff%^RESET%^ :erdo.c
+5:erdo&ut:%^BOLD%^*%^RESET%^%^GREEN%^f%^RESET%^ :orszagut.c
+6:erdo&folyo:%^BOLD%^%^BLUE%^~%^RESET%^%^GREEN%^f%^RESET%^ :erdofoly.c
+,:erdo&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :erdofolyam.c
+7:dombsag:%^ORANGE%^ss%^RESET%^ :domb.c
+8:dombsag&ut:%^BOLD%^*%^RESET%^%^ORANGE%^s%^RESET%^ :orszagut.c
+9:dombsag&folyo:%^BOLD%^%^BLUE%^~%^RESET%^%^ORANGE%^s%^RESET%^ :dombfoly.c
+m:dombsag&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :dombfolyam.c
+a:mocsar:%^GREEN%^ww%^RESET%^ :mocsar.c
+b:mocsar&ut:%^BOLD%^*%^RESET%^%^GREEN%^w%^RESET%^ :orszagut.c
+c:mocsar&folyo:%^BOLD%^%^BLUE%^~%^RESET%^%^GREEN%^w%^RESET%^ :mocsarfoly.c
+l:mocsar&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :mocsarfolyam.c
+d:hegyseg:%^ORANGE%^/\%^RESET%^ 
+e:hegyszoros:%^BOLD%^*%^RESET%^%^ORANGE%^\%^RESET%^ :hegyszoros.c
+f:hegyseg&folyo:%^BOLD%^%^BLUE%^~%^RESET%^%^ORANGE%^\%^RESET%^ :hegyfoly.c
+k:hegyseg&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :hegyfolyam.c
+g:sivatag:%^YELLOW%^..%^RESET%^ :sivatag.c
+h:sivatag&ut:%^BOLD%^*%^YELLOW%^.%^RESET%^ :orszagut.c
+i:sivatag&folyo:%^BLUE%^%^BOLD%^~%^RESET%^%^YELLOW%^.%^RESET%^ :sivatagfoly.c
+j:szavanna:%^YELLOW%^,,%^RESET%^ :szavanna.c
+v:varos:%^BOLD%^%^RED%^()%^RESET%^ 
+w:varos&kikoto:%^BOLD%^%^RED%^[]%^RESET%^ 
+y:falu:%^BOLD%^%^RED%^<>%^RESET%^ 
+s:havashegy:%^WHITE%^/\%^RESET%^ 
+/:havashegy&folyo:%^BLUE%^%^BOLD%^~%^RESET%^%^WHITE%^\%^RESET%^ :havashegyfoly.c
+n:havasdomb:%^WHITE%^ss%^RESET%^ :havasdomb.c
+r:havasdomb&folyo:%^BOLD%^%^BLUE%^~%^RESET%^%^WHITE%^s%^RESET%^ :havasfoly.c
+p:puszta:%^BOLD%^%^GREEN%^..%^RESET%^ :puszta.c
+t:to:%^BLUE%^+-%^RESET%^ :to.c
+q:dzsungel:%^BOLD%^%^GREEN%^bb%^RESET%^ :dzsungel.c
+.:tundra:%^WHITE%^,,%^RESET%^ :tundra.c
+\:tundra&folyo:%^BLUE%^%^BOLD%^~%^RESET%^%^WHITE%^,%^RESET%^ :tundrafoly.c
+;:dzsungel&folyo:%^BLUE%^%^BOLD%^~%^RESET%^%^BOLD%^%^GREEN%^b%^RESET%^ :dzsungelfoly.c
+!:dzsungel&folyam:%^BLUE%^%^BOLD%^~%^RESET%^%^BLUE%^-%^RESET%^ :dzsungelfolyam.c
+
