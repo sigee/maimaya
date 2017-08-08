@@ -10,6 +10,8 @@
 
 inherit DAEMON;
 
+#define BASE_EXITS ({ "kelet", "nyugat", "eszak", "del", "eszaknyugat", "delnyugat", "eszakkelet", "delkelet", "le", "fel" })
+
 private static mapping __Cmds;
 private static string *__Paths;
 
@@ -72,3 +74,7 @@ varargs string *query_commands(string str) {
     while(i--) if(member_array(str, __Cmds[cmds[i]]) != -1) tmp += ({cmds[i]});
     return tmp;
   }
+
+int is_base_exit( string exit ){
+    return (member_array( exit, BASE_EXITS ) != -1);
+}

@@ -25,20 +25,7 @@ static void create() {
 }
 
 void init() {
-    add_action("cmd_go", "go");
     add_action("cmd_enter", "enter");
-}
-
-int cmd_go(string str) {
-    if((int)this_player()->query_paralyzed())
-      return notify_fail("You are unable to move.\n");
-    if(!__Exits[str]) return notify_fail("You go nowhere at all.\n");
-    if(__Exits[str]["pre"] && !((int)(*__Exits[str]["pre"])(str))) return 1;
-    add_track(this_player(), str);
-    add_scent(this_player(), str);
-    this_player()->move_player(__Exits[str]["room"], str);
-    if(__Exits[str]["post"]) (*__Exits[str]["post"])(str);
-    return 1;
 }
 
 int cmd_enter(string str) {
@@ -210,4 +197,16 @@ mapping query_scents() {
     tmp = allocate_mapping( i = sizeof( cles = keys(__Scents)));
     while(i--) tmp[cles[i]] = query_scent(cles[i]);
     return tmp;
+}
+
+int pre_exit_ok(string str) {
+    if(!str || !__Exits || !__Exits[str]) return 0;
+    if (__Exits[str]["pre"] && !((int)(*__Exits[str]["pre"])(str))) return 0;
+    return 1;
+}
+
+void post_exit(string str) {
+    if(__Exits[str]["post"]) {
+        (*__Exits[str]["post"])(str);
+    }
 }
