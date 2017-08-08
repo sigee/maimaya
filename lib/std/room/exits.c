@@ -210,3 +210,14 @@ void post_exit(string str) {
         (*__Exits[str]["post"])(str);
     }
 }
+
+static void set_pre_exit_functions(string *dirs, function *functions) {
+    int i;
+    if (!dirs || !functions || (sizeof(dirs) != sizeof(functions))) return;
+    i = sizeof(dirs);
+    while (i--) {
+        if (stringp(dirs[i]) && functionp(functions[i])) {
+            __Exits[dirs[i]]["pre"] = functions[i];
+        }
+    }
+}
