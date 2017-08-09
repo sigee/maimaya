@@ -333,6 +333,7 @@ void setup() {
     }
     if(!stringp(tmp = getenv("TERM"))) setenv("TERM", tmp = "unknown");
     term_info = (mapping)TERMINAL_D->query_term_info(tmp);
+    if(!stringp(tmp = getenv("EKEZET"))) setenv("EKEZET", tmp = "nincs");
     write_messages();
     autosave::setup();
     call_out("save_player", 2, query_name());
@@ -515,7 +516,9 @@ void write_messages() {
     int i;
 
     message("system", sprintf("\n        >>> Terminal currently set to %s <<<",
-	getenv("TERM")), this_object());
+        getenv("TERM")), this_object());
+    message("system", sprintf("\n        >>> Ékezetek módja: %s <<<",
+        getenv("EKEZET")), this_object());
     mail_stat = (mapping)FOLDERS_D->mail_status(query_name());
     if(mail_stat["unread"]) {
 	message("login", sprintf("\n        >>> %d of your %d %s are "
@@ -624,6 +627,7 @@ void receive_message(string msg_class, string msg) {
 	__MessageCue += ({ ({ msg_class, msg }) });
 	return;
     }
+    msg = TERMINAL_D->exchange_accents(getenv("EKEZET"), msg);
     if(__Client) {
 	receive("<"+msg_class+">"+msg+"\n");
 	return;

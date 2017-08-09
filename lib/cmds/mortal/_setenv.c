@@ -31,6 +31,14 @@ int cmd_setenv(string str) {
         this_player()->setenv("TERM", val);
         this_player()->reset_terminal();
         break;
+      case "EKEZET":
+        if(!TERMINAL_D->query_accents_support(val)) {
+          message("info", "Ismeretlen ékezet típus.", this_player());
+          val = "nincs";
+        }
+        this_player()->setenv("EKEZET", val);
+        this_player()->reset_terminal();
+        break;
       case "PROMPT":
         if(val == "" || !val) val = DEFAULT_PROMPT;
         else val = val + " ";

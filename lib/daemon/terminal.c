@@ -12,7 +12,7 @@ inherit DAEMON;
 #define ANSI(p) sprintf("%c["+(p)+"m", 27)
 #define ESC(p) sprintf("%c"+(p), 27)
 
-static mapping term_info;
+static mapping term_info, accents;
 
 void create() {
     daemon::create();
@@ -60,6 +60,23 @@ void create() {
       "B_MAGENTA": ANSI(45), "STATUS":"", "WINDOW":"", "INITTERM":"",
       "CLEARLINE":"\r", "ENDTERM":"" ]),
     ]);
+
+    accents = ([
+        "nincs" : ([ "á" : "a", "Á" : "A", "é" : "e", "É" : "E", "í" : "i",
+            "Í" : "I", "ó" : "o", "Ó" : "O", "ö" : "o", "Ö" : "O", "õ" : "o",
+            "Õ" : "O", "ú" : "u", "Ú" : "U", "ü" : "u", "Ü" : "U", "û" : "u",
+            "Û" : "U" ]),
+        "latin-1" : ([ "õ" : "ô", "Õ" : "Ô" ]),
+        "latin-2" : ([ ]),
+        "ascii" : ([ "á" : " ", "Á" : "?", "é" : "?", "É" : "", "í" : "?",
+            "Í" : "?", "ó" : "¢", "Ó" : "¢", "ö" : "?", "Ö" : "?", "õ" : "?",
+            "Õ" : "?", "ú" : "£", "Ú" : "£", "ü" : "", "Ü" : "±", "û" : "?",
+            "Û" : "?" ]),
+        "utf-8" : ([ "á" : "Ã¡", "Á" : "Ã", "é" : "Ã©", "É" : "Ã‰", "í" : "Ã­",
+            "Í" : "Ã", "ó" : "Ã³", "Ó" : "Ã“", "ö" : "Ã¶", "Ö" : "Ã–", "õ" : "Å‘",
+            "Õ" : "Å", "ú" : "Ãº", "Ú" : "Ãš", "ü" : "Ã¼", "Ü" : "Ãœ", "û" : "Å±",
+            "Û" : "Å°" ]),
+        ]);
 }
 
 mapping query_term_info(string type) {
@@ -81,4 +98,28 @@ string no_colours(string str) {
     while(i--)
       if(term_info["unknown"][bits[i]]) bits[i] = "";
     return implode(bits, "");
+}
+
+string exchange_accents(string type, string str) {
+    int i, max;
+    string *ks;
+    mapping et;
+    if (type == "latin-2") return str;
+    max = strlen(str);
+    et = accents[type];
+    ks = keys(et);
+    for (i = 0; i < max; i++) {
+        if (member_array(str[i..i], ks) != -1) {
+            str[i..i] = et[str[i..i]];
+            if (type == "utf-8") {
+                i++;
+                max++;
+            }
+        }
+    }
+    return str;
+}
+
+int query_accents_support(string str) {
+    return (accents[str] ? 1 : 0);
 }
