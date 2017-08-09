@@ -166,7 +166,7 @@ void describe_current_room(int verbose) {
 }
 
 void basic_commands() {
-    add_action("quit", "quit");
+    add_action("quit", "kilep");
 }
 
 int query_verbose() { return verbose_moves; }
@@ -250,16 +250,12 @@ int remove() {
 }
 
 int quit(string str) {
-    if(__NoQuit && !query_forced()) return notify_fail("Stinking cheater.\n");
-    if (str) {
-	notify_fail("Quit what ?\n");
-	return 0;
-    }
-    if(query_followers()) clear_followers();
-    message("environment",
-      "Reality suspended.  See you another time!", this_object());
-    save_player( query_name() );
-    say(query_cap_name() + " is gone from our reality.");
+    if (__NoQuit && !query_forced()) return notify_fail("Büdös csaló.\n");
+    if (str) return notify_fail("Hmm.. Valami hiba történt.\n");
+    if (query_followers()) clear_followers();
+    message("environment", "Viszlát legközelebb!", this_object());
+    save_player(query_name());
+    say(query_cap_name() + " kilépett a játékból.");
     log_file("enter", query_name()+" (quit): "+ctime(time())+"\n");
     PLAYER_D->add_player_info();
     remove();

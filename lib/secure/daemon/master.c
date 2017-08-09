@@ -318,8 +318,8 @@ static void crash(string err) {
     write_file(DIR_LOGS+"/crashes", mud_name()+" crashed "+ctime(time())+" with error "+
       err+".\n");
     shout("Atmos tells you think "+mud_name()+" is crashing!\n");
-    shout("Atmos forced you to: quit\n");
-    users()->force_me("quit");
+    shout("Atmos forced you to: kilep\n");
+    users()->force_me("kilep");
 }
 
 int valid_seteuid(object ob, string id) {

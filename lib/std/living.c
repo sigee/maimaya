@@ -111,7 +111,7 @@ nomask static int cmd_hook(string cmd) {
           this_object());
         return 1;
     }
-    if( (verb = query_verb()) != "quit" && query_paralyzed()) {
+    if( (verb = query_verb()) != "kilep" && query_paralyzed()) {
 	message("my_action", sprintf("%s", (string)this_player()->query_paralyze_message()),
 	  this_player());
         return 1;
@@ -128,7 +128,7 @@ nomask static int cmd_hook(string cmd) {
                 return 1;
             }
             if (CMD_D->is_base_exit(verb)) {
-                return notify_fail("Nem mehetsz abba az iranyba.\n");
+                return notify_fail("Nem mehetsz abba az irányba.\n");
             }
             if((int)CHAT_D->do_chat(verb, cmd)) return 1;
             else {
