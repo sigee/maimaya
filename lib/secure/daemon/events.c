@@ -165,19 +165,19 @@ void change_sky() {
     switch(__TimeOfDay) {
         case "night":
             __TimeOfDay = "dawn";
-            msg = "%^ORANGE%^The sun appears over the horizon of our reality.%^RESET%^";
+            msg = "%^ORANGE%^A Nap felemelkedik a keleti láthatáron.%^RESET%^";
             break;
         case "dawn":
             __TimeOfDay = "day";
-            msg = "%^YELLOW%^The sun now shines completely on a new day.%^RESET%^";
+            msg = "%^YELLOW%^A delelõ Nap fénye beragyogja az egész világot.%^RESET%^";
             break;
         case "day":
             __TimeOfDay = "twilight";
-           msg = "%^BOLD%^CYAN%^The sun begins to fall away into twilight.%^RESET%^";
+           msg = "%^ORANGE%^A Nap kezd lenyugodni a nyugati láthatáron.%^RESET%^";
             break;
         case "twilight":
             __TimeOfDay = "night";
-            msg = "%^BOLD%^BLUE%^Night darkens the whole of our reality.%^RESET%^";
+            msg = "%^BOLD%^%^BLACK%^Sötétség borítja el az egész világot.%^RESET%^";
             break;
     }
     message("environment", msg, users());
